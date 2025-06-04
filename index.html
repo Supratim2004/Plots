@@ -49,7 +49,7 @@
         <li><a href="IID/Unequal-mean_Unequal-std_AllTeams.html" target="_blank">Unequal-mean_Unequal-std_AllTeams</a></li>
         <li><a href="IID/AllConfigurations_AllTeams.html" target="_blank">Combined Plots</a></li>
     </ul>
-    <h1>Non IID with_Difference across significant players</h1>
+    <h1>Non IID with Difference across significant players</h1>
     <ul>
         <li><a href="Non IID with_Difference across significant players/Equi-mean_Equivariance_AllTeams.html" target="_blank">Equi-mean_Equivariance_AllTeams</a></li>
         <li><a href="Non IID with_Difference across significant players/Equi-mean_Unequal-std_AllTeams.html" target="_blank">Equi-mean_Unequal-std_AllTeams</a></li>
@@ -57,6 +57,14 @@
         <li><a href="Non IID with_Difference across significant players/Unequal-mean_Unequal-std_AllTeams.html" target="_blank">Unequal-mean_Unequal-std_AllTeams</a></li>
         <li><a href="Non IID with_Difference across significant players/AllConfigurations_AllTeams.html" target="_blank">Combined Plots</a></li>
     </ul>
+    <h1>Non IID with Difference across experts</h1>
+    <ul>
+        <li><a href="Non IID with Difference across experts/Equi-mean_Equivariance_AllTeams.html" target="_blank">Equi-mean_Equivariance_AllTeams</a></li>
+        <li><a href="Non IID with Difference across experts/Equi-mean_Unequal-std_AllTeams.html" target="_blank">Equi-mean_Unequal-std_AllTeams</a></li>
+        <li><a href="Non IID with Difference across experts/Unequal-mean_Equivariance_AllTeams.html" target="_blank">Unequal-mean_Equivariance_AllTeams</a></li>
+        <li><a href="Non IID with Difference across experts/Unequal-mean_Unequal-std_AllTeams.html" target="_blank">Unequal-mean_Unequal-std_AllTeams</a></li>
+        <li><a href="Non IID with Difference across experts/AllConfigurations_AllTeams.html" target="_blank">Combined Plots</a></li>
+    </ul>   
     <h1>Non IID with Difference across significant players and experts</h1>
     <ul>
         <li><a href="Non IID with Difference across significant players and experts/Equi-mean_Equivariance_AllTeams.html" target="_blank">Equi-mean_Equivariance_AllTeams</a></li>
@@ -65,20 +73,42 @@
         <li><a href="Non IID with Difference across significant players and experts/Unequal-mean_Unequal-std_AllTeams.html" target="_blank">Unequal-mean_Unequal-std_AllTeams</a></li>
         <li><a href="Non IID with Difference across significant players and experts/AllConfigurations_AllTeams.html" target="_blank">Combined Plots</a></li>
     </ul>
-    
-
+     
     <div class="explanation">
-        <h2>Explanation of Dirichlet Parameters</h2>
-        <p>These numpy arrays describe the configurations of the Dirichlet parameters used for generating the plots:</p>
-        <p>
-            - <strong>IID</strong>: All significant players share identical distributions across all experts, represented by [2, 2, 2, 5(remaining)].<br>
-            - <strong>Non IID with Difference across significant players</strong>: The significant players have varying distributions, here [1, 2, 3, 5 (remaining)], but consistent across experts.<br>
-            - <strong>Non IID with Difference across significant players and experts</strong>: Different experts have distinct distributions, showcasing variations across both players and experts.
-            [1, 2, 3, 5],
-        [2.2, 2, 1.8, 5],
-        [4, 1, 1, 5],
-        [5.8, 0.1, 0.1, 5]
-        </p>
-    </div>
+    <h2>Explanation of Dirichlet Parameters</h2>
+    <p>These numpy arrays define various configurations of Dirichlet parameters across experts and significant players:</p>
+    <ul>
+        <li>
+            <strong>IID</strong>: Each expert has identical Dirichlet parameters: [2, 2, 2, 5].<br>
+            This implies a symmetric and identical skill distribution for the significant players across all experts, with 5 units reserved for the rest (non-significant or remaining players).
+        </li>
+        <li>
+            <strong>Non-IID with Difference Across Significant Players</strong>: All experts use [1, 2, 3, 5] as Dirichlet parameters.<br>
+            This introduces asymmetry in the significant players' skill distributions, but the structure is consistent across all experts.
+        </li>
+        <li>
+            <strong>Non-IID with Difference Across Experts</strong>: All experts share equal relative strengths across significant players (e.g., [x, x, x]), but the total weight differs.<br>
+            For example:
+            <ul>
+                <li>[1.5, 1.5, 1.5, 6.5]</li>
+                <li>[2, 2, 2, 5]</li>
+                <li>[2.5, 2.5, 2.5, 3.5]</li>
+                <li>[3, 3, 3, 2]</li>
+            </ul>
+            This simulates experts with the same belief pattern but different confidence or scale.
+        </li>
+        <li>
+            <strong>Non-IID with Difference Across Significant Players and Experts</strong>: Both the distribution across significant players and the total weight differ for each expert.<br>
+            Each expert uses a distinct Dirichlet parameter vector:
+            <ul>
+                <li>[0.75, 1.5, 2.25, 6.5]</li>
+                <li>[1, 2, 3, 5]</li>
+                <li>[1.25, 2.5, 3.75, 3.5]</li>
+                <li>[1.5, 3, 4.5, 2]</li>
+            </ul>
+            This reflects maximum heterogeneity in expert belief structures across both individual players and total influence.
+        </li>
+    </ul>
+</div>
 </body>
 </html>
